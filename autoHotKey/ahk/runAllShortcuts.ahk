@@ -1,18 +1,23 @@
 #Requires AutoHotkey v2.0
 SetTitleMatchMode("2")
 
-!r:: ; Alt+r to run all shortcut scripts at once
+TrayTip("AutoHotKey","Parent AutoHotKey activated",3)
+
+!r:: ; Alt+r to run other AutoHotKeys
 {
+    TrayTip("AutoHotkey","Running other AutoHotKeys",3)
     Run("C:\ahk\shortcuts\ADOShortcuts.ahk")
     Run("C:\ahk\shortcuts\chatShortcuts.ahk")
     Run("C:\ahk\shortcuts\simulatingMouseClickShortcuts.ahk")
     Run("C:\ahk\shortcuts\cmdShortcuts.ahk")
+
 }
 
 !k:: ; Alt+K to force kill all AHK processes
 { 
     RunWait 'taskkill /IM "ahk.exe" /F', , "Hide"
     RunWait 'taskkill /IM "AutoHotkey64.exe" /F', , "Hide"
+    TrayTip("AutoHotKey","Kiled all AutoHotKeys",3)
 }
 
 ::yt:: ;youtube
